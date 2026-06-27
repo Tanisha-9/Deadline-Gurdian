@@ -22,6 +22,7 @@ interface DashboardProps {
   procrastinationLogs: ProcrastinationEvent[];
   persona?: 'student' | 'professional' | 'entrepreneur';
   onToggleTaskComplete?: (taskId: string) => void;
+  onStartTour?: () => void;
 }
 
 export default function Dashboard({
@@ -37,7 +38,8 @@ export default function Dashboard({
   isGeneratingPlan,
   procrastinationLogs,
   persona = 'student',
-  onToggleTaskComplete
+  onToggleTaskComplete,
+  onStartTour
 }: DashboardProps) {
   const [showAllPlan, setShowAllPlan] = useState(false);
   const [manualHabitText, setManualHabitText] = useState('');
@@ -169,6 +171,17 @@ export default function Dashboard({
           <p className="text-slate-400 text-sm mt-1">
             {greetingDetails.sub}
           </p>
+          {onStartTour && (
+            <div className="mt-3.5 flex items-center gap-3">
+              <button
+                onClick={onStartTour}
+                className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-semibold rounded-xl text-xs flex items-center gap-2 shadow-lg shadow-indigo-950/40 hover:shadow-indigo-950/60 transition-all font-mono hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Sparkles className="h-4 w-4 animate-pulse fill-current" />
+                <span>Take Interactive Tour</span>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Stats strip */}

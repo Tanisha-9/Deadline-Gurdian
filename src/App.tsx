@@ -947,9 +947,8 @@ export default function App() {
               <Zap className="h-5 w-5 text-yellow-300 animate-pulse fill-current" />
             </div>
             <div>
-              <h1 className="text-md font-bold tracking-tight text-white font-sans hidden sm:block">Deadline Guardian</h1>
-              <h1 className="text-md font-bold tracking-tight text-white font-sans sm:hidden">Deadline Guardian</h1>
-              <span className="text-[10px] font-mono font-medium text-slate-500 uppercase tracking-widest block -mt-0.5">Gemini Coach & Planner</span>
+              <h1 className="text-sm sm:text-md font-bold tracking-tight text-white font-sans">Deadline Guardian</h1>
+              <span className="text-[9px] sm:text-[10px] font-mono font-medium text-slate-500 uppercase tracking-widest block -mt-0.5">Gemini Coach & Planner</span>
             </div>
           </div>
 
@@ -1184,6 +1183,10 @@ export default function App() {
                 procrastinationLogs={procrastinationLogs}
                 persona={persona}
                 onToggleTaskComplete={handleToggleTaskComplete}
+                onStartTour={() => {
+                  localStorage.removeItem('has_completed_tour');
+                  setShowTour(true);
+                }}
               />
             )}
 
