@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "Task": {
+      "title": "Task",
+      "description": "User tasks requiring planning, urgency calculations, and subtask tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "estimatedHours": { "type": "number" },
+        "completedHours": { "type": "number" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+        "priority": { "type": "string", "enum": ["low", "medium", "high"] },
+        "subtasks": { "type": "array" },
+        "completed": { "type": "boolean" },
+        "riskScore": { "type": "number" },
+        "riskLevel": { "type": "string", "enum": ["Safe", "At Risk", "Critical"] },
+        "category": { "type": "string" },
+        "resources": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "dueDate", "completed"]
+    },
+    "Habit": {
+      "title": "Habit",
+      "description": "Weekly goals and streak tracking for behavioral insights",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "targetWeekly": { "type": "number" },
+        "completedDays": { "type": "array" },
+        "streak": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "targetWeekly"]
+    },
+    "ProcrastinationLog": {
+      "title": "ProcrastinationLog",
+      "description": "Logged distractions and app switching events for behavioral AI coaching",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "activity": { "type": "string" },
+        "durationMinutes": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "activity", "durationMinutes", "timestamp"]
+    },
+    "Opportunity": {
+      "title": "Opportunity",
+      "description": "Professional or academic opportunities detected from user emails or system scans",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "source": { "type": "string", "enum": ["email", "calendar", "notes"] },
+        "dueDate": { "type": "string" },
+        "status": { "type": "string", "enum": ["detected", "added", "dismissed"] }
+      },
+      "required": ["id", "userId", "title", "description", "source", "status"]
+    }
+  },
+  "firestore": {
+    "tasks": {
+      "schema": "Task",
+      "description": "User productivity tasks"
+    },
+    "habits": {
+      "schema": "Habit",
+      "description": "User recurring habits"
+    },
+    "procrastinationLogs": {
+      "schema": "ProcrastinationLog",
+      "description": "Behavioral distraction metrics"
+    },
+    "opportunities": {
+      "schema": "Opportunity",
+      "description": "AI-detected hackathons or interview opportunities"
+    }
+  }
+}

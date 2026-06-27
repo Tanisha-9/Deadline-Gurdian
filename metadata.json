@@ -1,0 +1,6 @@
+{
+  "name": "Deadline Guardian",
+  "description": "An AI-powered productivity companion that proactively assists in planning, prioritizing, and completing tasks with Google Calendar, Gmail, and Gemini-driven urgency engines.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
